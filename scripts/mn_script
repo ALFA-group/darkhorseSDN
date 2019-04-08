@@ -1,0 +1,7 @@
+py h1.sendCmd("tmux new-session -d -s tmuxSesh 'bash ./scripts/deception_server.sh'")
+h2 dhclient -r
+h2 dhclient h2-eth0
+py h2.pexec("sleep 5s")
+py h2.pexec("bash ./scripts/nmap_scan.sh")
+py h1.pexec("tmux kill-session -t tmuxSesh")
+
